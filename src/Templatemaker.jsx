@@ -14,8 +14,7 @@ export default function Templatemaker({ formData }) {
   };
   const handleBackgroundImageChange = () => {
     const certificate = document.getElementById("certificate");
-    certificate.style.backgroundImage =
-      "url(src/assets/templates/certificate4.jpeg)";
+    certificate.style.backgroundImage = "url(./templates/certificate4.jpeg)";
     certificate.style.backgroundSize = "100%";
   };
 
