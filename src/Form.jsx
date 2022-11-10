@@ -71,7 +71,12 @@ export default function Form({ giveFormDataToApp }) {
       alert("Please add the text.\nIt are required for any certificate.");
       return;
     }
-    const formData = { logos, title, text, signatures };
+    const formData = {
+      logos: [...logos],
+      title,
+      text,
+      signatures: [...signatures],
+    };
     giveFormDataToApp(formData);
   };
 

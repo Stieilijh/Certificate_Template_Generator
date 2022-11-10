@@ -11,7 +11,7 @@ export default function App() {
   };
   return (
     <div id="App">
-      <h1>Certificate Template Generator </h1>
+      <h1>Certificate Template Generator</h1>
       {!submitted ? (
         <Form giveFormDataToApp={giveFormDataToApp} />
       ) : (
