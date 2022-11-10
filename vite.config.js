@@ -4,5 +4,5 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "https://github.com/stieilijh/CERTIFICATE_TEMPLATE_GENERATOR/",
+  base: "/Certificate_Template_Generator/",
 });
