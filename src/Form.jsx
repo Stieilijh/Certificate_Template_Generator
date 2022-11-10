@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Form() {
+export default function Form({ giveFormDataToApp }) {
   const [logos, setLogos] = useState([]);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -13,9 +13,11 @@ export default function Form() {
     }
     for (let i of e.target.files) {
       if (
-        i.type != "image/jpeg" ||
-        i.type != "image/jpg" ||
-        i.type != "image/png"
+        !(
+          i.type == "image/jpeg" ||
+          i.type == "image/jpg" ||
+          i.type == "image/png"
+        )
       ) {
         alert(
           "Please add an image from the supported formats.\nSupported formats are jpg(or jpeg) and png."
@@ -40,9 +42,11 @@ export default function Form() {
     }
     for (let i of e.target.files) {
       if (
-        i.type != "image/jpeg" ||
-        i.type != "image/jpg" ||
-        i.type != "image/png"
+        !(
+          i.type != "image/jpeg" ||
+          i.type != "image/jpg" ||
+          i.type != "image/png"
+        )
       ) {
         alert(
           "Please add an image from the supported formats.\nSupported formats are jpg(or jpeg) and png."
@@ -59,14 +63,16 @@ export default function Form() {
       alert("Please add the logos.\nThey are required for any certificate.");
       return;
     }
-    if ((title = "")) {
+    if (title == "") {
       alert("Please add a title.\nIt are required for any certificate.");
       return;
     }
-    if ((text = "")) {
+    if (text == "") {
       alert("Please add the text.\nIt are required for any certificate.");
       return;
     }
+    const formData = { logos, title, text, signatures };
+    giveFormDataToApp(formData);
   };
 
   return (
@@ -88,6 +94,7 @@ export default function Form() {
         <input
           id="titleInput"
           type="text"
+          autoComplete="off"
           placeholder="Title"
           onChange={handleTitleInputChange}
           maxLength="40"
@@ -96,6 +103,7 @@ export default function Form() {
         <input
           id="textInput"
           type="text"
+          autoComplete="off"
           placeholder=" Text"
           onChange={handleTextInputChange}
           maxLength="100"
@@ -110,7 +118,9 @@ export default function Form() {
         />
         <br />
         <br />
-        <button onClick={handleSubmitForm}>Submit</button>
+        <button type="button" onClick={handleSubmitForm}>
+          Submit
+        </button>
       </form>
     </div>
   );
