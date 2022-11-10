@@ -1,7 +1,11 @@
 import { useState } from "react";
+import Form from "./Form";
 
-function App() {
-  return <div className="App"></div>;
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Certificate Template Generator </h1>
+      <Form />
+    </div>
+  );
 }
-
-export default App;
