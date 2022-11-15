@@ -1,4 +1,5 @@
 import "./css/Template.css";
+
 export default function Template({ title, logos, text, signatures }) {
   return (
     <div id="certificate">
@@ -6,7 +7,8 @@ export default function Template({ title, logos, text, signatures }) {
       <div id="titleDiv">{title}</div>
       <div id="certifyText">This is to certify that</div>
       <br />
-      <div i="text">{text}</div>
+      <div id="textDiv">{text}</div>
+      <Signatures signatures={signatures} />
     </div>
   );
 }
@@ -16,6 +18,7 @@ function Logos({ logos }) {
     console.error("logo length 0");
     return <p>There's Some error with the logos</p>;
   }
+
   return (
     <div id="logosDiv">
       {logos.map((element, index) => {
@@ -26,6 +29,26 @@ function Logos({ logos }) {
             key={"logo" + (index + 1)}
             id={"logo" + (index + 1)}
             className="logoImgs"
+          />
+        );
+      })}
+    </div>
+  );
+}
+function Signatures({ signatures }) {
+  if (signatures.length == 0) {
+    return <></>;
+  }
+  return (
+    <div id="SignaturesDiv">
+      {signatures.map((element, index) => {
+        const imageUrl = URL.createObjectURL(element);
+        return (
+          <img
+            src={imageUrl}
+            key={"signature" + (index + 1)}
+            id={"signature" + (index + 1)}
+            className="signaturesImgs"
           />
         );
       })}
